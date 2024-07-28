@@ -191,11 +191,13 @@ function insertLetters(baseString, letters) {
     return result.join('');
 }
 
-export const generateMessageID = () => {
+/*export const generateMessageID = () => {
     const baseString = generateRandomString(32 - 9);
     const lettersToInsert = 'PRABATHMD';
     return insertLetters(baseString, lettersToInsert);
-}
+}*/
+
+export const generateMessageID = () => randomBytes(16).toString('hex').toUpperCase()
 
 export function bindWaitForEvent<T extends keyof BaileysEventMap>(ev: BaileysEventEmitter, event: T) {
 	return async(check: (u: BaileysEventMap[T]) => boolean | undefined, timeoutMs?: number) => {
